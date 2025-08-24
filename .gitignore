@@ -220,8 +220,8 @@ backup_data
 
 sampled_data 
 
-dataset
+datasetv1
 
-logs 
+tensorboard_logs 
 
-model_checkpoint.keras
+models

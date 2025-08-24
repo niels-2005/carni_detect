@@ -1,27 +1,23 @@
 import tensorflow as tf
-from src.carni_detect.utils.get_image_dataset import get_image_dataset
-from src.carni_detect.utils.get_model import get_model
+from carni_detect.utils.get_image_datasets import get_training_datasets
+from carni_detect.utils.build_model import build_model
 from src.carni_detect.utils.get_training_callbacks import get_training_callbacks
+from src.carni_detect.config import ModelTrainingConfig
 
 
-def get_training_setup():
-    model = get_model()
-    train_dataset = get_image_dataset(
-        data_directory="dataset/train", batch_size=32, shuffle=True
-    )
+def train_model(config: ModelTrainingConfig = ModelTrainingConfig()):
+    # this function builds and compiles the model.
+    model = build_model()
 
-    val_dataset = get_image_dataset(
-        data_directory="dataset/val", batch_size=32, shuffle=False
-    )
+    # get loaded and preprocessed datasets
+    train_dataset, val_dataset = get_training_datasets()
 
-    callbacks = get_training_callbacks()
-    return model, train_dataset, val_dataset, callbacks
-
-
-def train_model():
-    model, train_dataset, val_dataset, callbacks = get_training_setup()
-    model.fit(
-        train_dataset, validation_data=val_dataset, epochs=10, callbacks=callbacks
+    # start training!
+    history = model.fit(
+        train_dataset,
+        validation_data=val_dataset,
+        epochs=config.EPOCHS,
+        callbacks=get_training_callbacks(),
     )
 
 
