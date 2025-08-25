@@ -47,12 +47,12 @@ async def predict(file: UploadFile):
         confidence = float(np.max(predictions))
 
         if confidence < config.INFERENCE_CONFIDENCE_THRESHOLD:
-            return JSONResponse(content={"success": "0"}, status_code=200)
+            return JSONResponse(content={"success": 0}, status_code=200)
         else:
             pred = np.argmax(predictions)
             return JSONResponse(
                 content={
-                    "success": "1",
+                    "success": 1,
                     "name": class_names[pred],
                     "link": fci_links[pred],
                 },
