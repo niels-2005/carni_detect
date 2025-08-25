@@ -2,10 +2,14 @@ import numpy as np
 import pandas as pd
 from sklearn.metrics import classification_report
 import os
+from carni_detect.config import ModelEvaluationConfig
 
 
 def calculate_classes_metrics(
-    y_true: np.ndarray, y_pred: np.ndarray, classes: np.ndarray
+    y_true: np.ndarray,
+    y_pred: np.ndarray,
+    classes: np.ndarray,
+    config: ModelEvaluationConfig = ModelEvaluationConfig(),
 ) -> pd.DataFrame:
     """
     Calculates precision, recall, and f1-score for each class based on the true and predicted labels.
@@ -27,6 +31,5 @@ def calculate_classes_metrics(
     df = pd.DataFrame.from_dict(report).transpose().reset_index()
     df.rename(columns={"index": "class_name"}, inplace=True)
 
-    save_path = "evaluation/classification_report.csv"
-    os.makedirs(os.path.dirname(save_path), exist_ok=True)
-    df.to_csv(save_path, index=False)
+    os.makedirs(os.path.dirname(config.CLASSIFICATION_REPORT_SAVE_PATH), exist_ok=True)
+    df.to_csv(config.CLASSIFICATION_REPORT_SAVE_PATH, index=False)

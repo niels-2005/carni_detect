@@ -1,5 +1,5 @@
 import tensorflow as tf
-from src.carni_detect.config import ModelBuildingConfig
+from carni_detect.config import ModelBuildingConfig
 
 
 def build_model(config: ModelBuildingConfig = ModelBuildingConfig()) -> tf.keras.Model:

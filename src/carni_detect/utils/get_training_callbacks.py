@@ -1,5 +1,5 @@
 import tensorflow as tf
-from src.carni_detect.config import TrainingCallbacksConfig
+from carni_detect.config import TrainingCallbacksConfig
 
 
 def get_early_stopping_callback(

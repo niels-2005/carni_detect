@@ -1,5 +1,5 @@
 import tensorflow as tf
-from src.carni_detect.config import ImageDatasetConfig
+from carni_detect.config import ImageDatasetConfig
 import numpy as np
 
 

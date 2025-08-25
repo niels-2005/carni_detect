@@ -1,7 +1,9 @@
-from src.carni_detect.utils.get_image_datasets import get_training_datasets
-from src.carni_detect.utils.build_model import build_model
-from src.carni_detect.utils.get_training_callbacks import get_training_callbacks
-from src.carni_detect.config import ModelTrainingConfig
+from .utils import (
+    get_training_datasets,
+    build_model,
+    get_training_callbacks,
+)
+from .config import ModelTrainingConfig
 
 
 def train_model(config: ModelTrainingConfig = ModelTrainingConfig()) -> None:

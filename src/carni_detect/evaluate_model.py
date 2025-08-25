@@ -1,8 +1,10 @@
-from src.carni_detect.utils.get_predictions import get_predictions
-from src.carni_detect.utils.load_model import load_model
-from src.carni_detect.utils.get_image_datasets import get_evaluation_dataset
-from src.carni_detect.utils.get_classes import get_classes
-from src.carni_detect.utils.calculate_metrics import calculate_classes_metrics
+from .utils import (
+    get_predictions,
+    load_model,
+    get_evaluation_dataset,
+    get_classes,
+    calculate_classes_metrics,
+)
 
 
 def evaluate_model() -> None:

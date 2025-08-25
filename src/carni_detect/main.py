@@ -1,5 +1,5 @@
-from src.carni_detect.train_model import train_model
-from src.carni_detect.evaluate_model import evaluate_model
+from .train_model import train_model
+from .evaluate_model import evaluate_model
 
 
 def start_pipeline() -> None:

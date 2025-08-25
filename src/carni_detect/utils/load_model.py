@@ -1,5 +1,5 @@
 import tensorflow as tf
-from src.carni_detect.config import ModelLoadingConfig
+from carni_detect.config import ModelLoadingConfig
 
 
 def load_model(config: ModelLoadingConfig = ModelLoadingConfig()) -> tf.keras.Model:

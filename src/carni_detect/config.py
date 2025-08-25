@@ -1,4 +1,3 @@
-import os
 import tensorflow as tf
 
 
@@ -89,7 +88,7 @@ class TrainingCallbacksConfig:
     REDUCE_LR_FACTOR = 0.1
     REDUCE_LR_MIN_LR = 1e-6
 
-    MODEL_SAVE_PATH = "models/carnidetectv1.keras"
+    MODEL_SAVE_PATH = "carni_detect/models/carnidetectv1.keras"
 
     TENSORBOARD_LOG_DIR = "tensorboard_logs"
 
@@ -102,4 +101,28 @@ class ModelLoadingConfig:
         MODEL_PATH (str): Path to the saved model.
     """
 
-    MODEL_PATH = "models/carnidetectv1.keras"
+    MODEL_PATH = "/app/src/carni_detect/models/carnidetectv1.keras"
+
+
+class ModelEvaluationConfig:
+    """
+    Configuration class for model evaluation.
+
+    Attributes:
+        EVALUATION_METRICS (list): List of metrics to evaluate the model.
+    """
+
+    CLASSIFICATION_REPORT_SAVE_PATH = "evaluation/classification_report.csv"
+
+
+class InferenceConfig:
+    """
+    Configuration class for model inference.
+
+    Attributes:
+        INFERENCE_IMAGE_SIZE (tuple): Target size for resizing images during inference.
+        INFERENCE_CONFIDENCE_THRESHOLD (float): Confidence threshold for making predictions.
+    """
+
+    INFERENCE_IMAGE_SIZE = (224, 224)
+    INFERENCE_CONFIDENCE_THRESHOLD = 0.9

@@ -224,6 +224,4 @@ datasetv1
 
 tensorboard_logs 
 
-models
-
 evaluation
