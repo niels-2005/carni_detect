@@ -22,6 +22,7 @@ class ImageDatasetConfig:
 
     DATASET_TRAIN_DIR = "datasetv1/train"
     DATASET_VAL_DIR = "datasetv1/val"
+    DATASET_EVALUATION_DIR = "datasetv1/test"
 
 
 class ModelBuildingConfig:
@@ -91,3 +92,14 @@ class TrainingCallbacksConfig:
     MODEL_SAVE_PATH = "models/carnidetectv1.keras"
 
     TENSORBOARD_LOG_DIR = "tensorboard_logs"
+
+
+class ModelLoadingConfig:
+    """
+    Configuration class for model loading.
+
+    Attributes:
+        MODEL_PATH (str): Path to the saved model.
+    """
+
+    MODEL_PATH = "models/carnidetectv1.keras"

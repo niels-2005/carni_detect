@@ -1,5 +1,6 @@
 import tensorflow as tf
 from src.carni_detect.config import ImageDatasetConfig
+import numpy as np
 
 
 def preprocess_dataset(dataset: tf.data.Dataset) -> tf.data.Dataset:
@@ -71,3 +72,26 @@ def get_training_datasets(
         shuffle=False,
     )
     return train_dataset, val_dataset
+
+
+def get_evaluation_dataset(
+    config: ImageDatasetConfig = ImageDatasetConfig(),
+) -> tuple[tf.data.Dataset, np.ndarray]:
+    """
+    Creates an evaluation dataset based on the provided configuration.
+
+    Args:
+        config (ImageDatasetConfig): Configuration for the dataset.
+
+    Returns:
+        tf.data.Dataset: A TensorFlow dataset object for evaluation.
+        np.ndarray: The true labels for the evaluation dataset.
+    """
+    eval_dataset = get_image_dataset(
+        config=config,
+        dataset_dir=config.DATASET_EVALUATION_DIR,
+        shuffle=False,
+    )
+    # return true labels for evaluation
+    y_true = np.concatenate([y for x, y in eval_dataset], axis=0)
+    return eval_dataset, np.argmax(y_true, axis=1)
